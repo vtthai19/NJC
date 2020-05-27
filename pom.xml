@@ -29,15 +29,15 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
-				<configuration>
-				<sharedLibraries>
+            <configuration>
+                    <sharedLibraries>
                         <sharedLibrary>
                             <groupId>mysql</groupId>
                             <artifactId>mysql-connector-java</artifactId>
                         </sharedLibrary>
                     </sharedLibraries>
                 </configuration>
-			</plugin>
+            </plugin>
 		</plugins>
 	</build>
 
@@ -55,6 +55,12 @@
             <classifier>mule-plugin</classifier>
         </dependency>
 		<dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-xml-module</artifactId>
+            <version>1.2.2</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+    	<dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-db-connector</artifactId>
             <version>1.7.0</version>
@@ -74,7 +80,7 @@
     	<dependency>
             <groupId>4da1ee31-780d-4707-b34a-a24705a9a8a3</groupId>
             <artifactId>american-flights-api</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.1</version>
             <classifier>raml</classifier>
             <type>zip</type>
         </dependency>
