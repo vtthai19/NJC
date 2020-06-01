@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd ">
-    <apikit:config name="american-flights-api-config" api="resource::4da1ee31-780d-4707-b34a-a24705a9a8a3:american-flights-api:1.0.2:raml:zip:american-flights-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <apikit:config name="american-flights-api-config" api="resource::4da1ee31-780d-4707-b34a-a24705a9a8a3:american-flights-api:1.0.1:raml:zip:american-flights-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <flow name="american-flights-api-main">
         <http:listener config-ref="HTTP_Listener_config" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
@@ -163,50 +163,6 @@ output application/json
 ---
 {
   message: "Flight updated (but not really)"
-}]]></ee:set-payload>
-            </ee:message>
-        </ee:transform>
-    </flow>
-    <flow name="delete:\(ID):american-flights-api-config">
-        <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core">
-            <ee:variables>
-                <ee:set-variable variableName="ID">attributes.uriParams.'ID'</ee:set-variable>
-            </ee:variables>
-        </ee:transform>
-        <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-            <ee:message>
-                <ee:set-payload><![CDATA[%dw 2.0
-output application/json
----
-{
-  message: "Flight deleted (but not really)"
-}]]></ee:set-payload>
-            </ee:message>
-        </ee:transform>
-    </flow>
-    <flow name="get:\(ID):american-flights-api-config">
-        <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core">
-            <ee:variables>
-                <ee:set-variable variableName="ID">attributes.uriParams.'ID'</ee:set-variable>
-            </ee:variables>
-        </ee:transform>
-        <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-            <ee:message>
-                <ee:set-payload><![CDATA[%dw 2.0
-output application/json
----
-{
-  ID: 1,
-  code: "ER38sd",
-  price: 400,
-  departureDate: "2017/07/26",
-  origin: "CLE",
-  destination: "SFO",
-  emptySeats: 0,
-  plane: {
-    "type": "Boeing 737",
-    totalSeats: 150
-  }
 }]]></ee:set-payload>
             </ee:message>
         </ee:transform>
